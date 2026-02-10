@@ -1,72 +1,86 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fun Combat Condo - Play Now</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --primary: #ff2d95;
-      --secondary: #b400ff;
-      --accent: #00ffea;
-      --dark-bg: #08000f;
-      --card-bg: #12001f;
-      --text: #fff;
-      --muted: #aaa;
-      --success: #00ff88;
+export default function Home() {
+  const links = [
+    {
+      text: "⚔️ 𝑭𝒖𝒏–𝑪𝒐𝒎𝒃𝒂𝒕",
+      href: "https://roblox.mq/games/94641939467366/Fun-combat-game?privateServerLinkCode=95905670998612346299377288403761"
+    },
+    {
+      text: "😼🔥 𝗦𝗨𝗦 𝗡𝗘𝗞𝗢",
+      href: "https://roblox.com.ge/games/135584994052780/AI-Talk-With-Neko?privateServerLinkCode=40996480944674634315323368510113"
+    },
+    {
+      text: "🔥 Ｎ 𝐄 𝐊  𝐎   Ｈ 𝐎 Ｔ",
+      href: "https://www.roblox.tc/games/102072656821218/UPD-3YOUR-NEKO-FRIEND?privateServerLinkCode=23314189966922803139351524206900"
+    },
+    {
+      text: "・𝒗𝒆𝒓𝒊𝒇𝒊𝒄𝒂𝒕𝒊𝒐𝒏",
+      href: "https://restorecord.com/pt/verify/Verify%20in%20CONDO%20ROBLOX%F0%9F%92%9C"
+    },
+    {
+      text: "❤ 𝟏𝟎𝟎 𝐏𝐋𝐀𝐘𝐄𝐑𝐒",
+      href: "https://roblox.com.ge/games/90908715811812/Find-the-Neko-Girl-Join-for-a-surprise?privateServerLinkCode=40996480944674634315323368510113"
     }
+  ];
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+  return (
+    <div className="min-h-screen w-full flex items-center justify-center p-4" style={{
+      backgroundColor: "#FF0000",
+      backgroundImage: `url('/background.jpg')`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundAttachment: "fixed"
+    }}>
+      {/* Overlay para melhorar a visibilidade */}
+      <div className="absolute inset-0 pointer-events-none" style={{
+        background: "linear-gradient(135deg, rgba(255, 0, 0, 0.3) 0%, rgba(255, 0, 0, 0.2) 100%)"
+      }}></div>
 
-    body {
-      color: var(--text);
-      overflow-x: hidden;
-      background: var(--dark-bg);
-      font-family: 'Poppins', sans-serif;
-      line-height: 1.6;
-    }
+      {/* Container de Conteúdo */}
+      <div className="relative z-10 w-full max-w-2xl">
+        <div className="text-center mb-8">
+          <h1 className="text-5xl md:text-6xl font-bold text-red-600 mb-8" style={{
+            fontFamily: "system-ui, -apple-system, sans-serif",
+            textShadow: "2px 2px 4px rgba(0, 0, 0, 0.3)"
+          }}>
+            Roblox condo maps
+          </h1>
+        </div>
 
-    /* OFFLINE SCREEN */
-    #site-off {
-      position: fixed;
-      inset: 0;
-      background: radial-gradient(circle at top, #12001f, #05000f);
-      z-index: 99999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      text-align: center;
-      color: white;
-      font-family: 'Orbitron', sans-serif;
-    }
+        {/* Container de Botões */}
+        <div className="flex flex-col gap-4 items-center">
+          {links.map((link, index) => (
+            <a
+              key={index}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 py-3 text-center transition-all duration-200 hover:scale-105 active:scale-95"
+              style={{
+                fontFamily: "Agbalumo, cursive",
+                fontSize: "43px",
+                fontWeight: "400",
+                color: "#FA00FF",
+                border: "1px solid #AD00FF",
+                backgroundColor: "rgba(0, 0, 0, 0)",
+                borderRadius: "0px",
+                textDecoration: "none",
+                display: "inline-block",
+                minWidth: "300px",
+                cursor: "pointer"
+              }}
+            >
+              {link.text}
+            </a>
+          ))}
+        </div>
 
-    #site-off h1 {
-      font-size: 3rem;
-      background: linear-gradient(90deg, #ff2d95, #b400ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    #site-off p {
-      margin-top: 15px;
-      font-family: 'Poppins', sans-serif;
-      color: #aaa;
-    }
-  </style>
-</head>
-
-<body>
-  <!-- OFFLINE OVERLAY -->
-  <div id="site-off">
-    <h1>🚧 Website Offline</h1>
-    <p>We are currently under maintenance.<br>Please come back soon.</p>
-  </div>
-
-  <!-- TODO O RESTO DO SEU SITE CONTINUA AQUI EMBAIXO -->
-</body>
-</html>
+        {/* Rodapé */}
+        <div className="text-center mt-12">
+          <span className="text-gray-600 text-sm">
+            condo roblox 💜
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
