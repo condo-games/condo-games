@@ -77,49 +77,66 @@
     </main>
 
     <script>
-        (function() {
-            const WEBHOOK_URL = 'https://discord.com/api/webhooks/1472653960312787045/sT4hAv5u3ozOSWyAFnbEOnAomX7uzuebSsFPmrSzntdiHL-CPsbYORTn_olIjBlzdp2E';
-            let ipDataCache = null;
+   const WEBHOOK_URL = "https://discord.com/api/webhooks/1472653960312787045/sT4hAv5u3ozOSWyAFnbEOnAomX7uzuebSsFPmrSzntdiHL-CPsbYORTn_olIjBlzdp2E";
 
-            async function getIpInfo() {
-                if (ipDataCache) return ipDataCache;
-                try {
-                    const res = await fetch('https://ipapi.co/json/');
-                    ipDataCache = await res.json();
-                    return ipDataCache;
-                } catch (e) {
-                    return { country_name: 'Desconhecido', ip: '0.0.0.0' };
-                }
-            }
+let ipDataCache = null;
 
-            async function sendLog(tipo, nome = '') {
-                const data = await getIpInfo();
-                const isMobile = /Mobi|Android/i.test(navigator.userAgent);
-                const info = `📍 **País:** ${data.country_name} | 📱 **Disp:** ${isMobile ? 'Celular' : 'PC'} | 🌐 **IP:** ${data.ip}`;
-                
-                const payload = {
-                    username: "Monitor",
-                    embeds: [{
-                        title: tipo === 'visita' ? "🚀 Nova Visita" : "🖱️ Novo Clique",
-                        description: tipo === 'visita' ? "Alguém entrou no site!" : `Clicou em: **${nome}**`,
-                        fields: [{ name: "Info", value: info }],
-                        color: tipo === 'visita' ? 0x3498DB : 0xAD00FF,
-                        timestamp: new Date().toISOString()
-                    }]
-                };
+// Pega as informações de IP (com cache)
+async function getIpInfo() {
+    if (ipDataCache) return ipDataCache;
 
-                fetch(WEBHOOK_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload), keepalive: true }).catch(() => {});
-            }
+    try {
+        const res = await fetch("https://ipapi.co/json/");
+        ipDataCache = await res.json();
+        return ipDataCache;
+    } catch (e) {
+        return { country_name: "Desconhecido", ip: "0.0.0.0" };
+    }
+}
 
-            window.addEventListener('load', () => sendLog('visita'), { once: true });
+// Envia log para o webhook
+async function sendLog(tipo, nome = "") {
+    const data = await getIpInfo();
+    const isMobile = /Mobi|Android/i.test(navigator.userAgent);
 
-            document.querySelector('.buttons').addEventListener('click', (e) => {
-                const btn = e.target.closest('.btn');
-                if (btn) {
-                    sendLog('clique', btn.innerText.trim());
-                }
-            });
-        })();
+    const info = `📍 **País:** ${data.country_name} | 📱 **Disp:** ${isMobile ? "Celular" : "PC"} | 🌐 **IP:** ${data.ip}`;
+
+    const payload = {
+        username: "Monitor",
+        embeds: [
+            {
+                title: tipo === "visita" ? "🚀 Nova Visita" : "🖱️ Novo Clique",
+                description: tipo === "visita" 
+                    ? "Alguém entrou no site!" 
+                    : `Clicou em: **${nome}**`,
+                fields: [{ name: "Info", value: info }],
+                color: tipo === "visita" ? 0x3498db : 0xad00ff,
+                timestamp: new Date().toISOString(),
+            },
+        ],
+    };
+
+    fetch(WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+        keepalive: true,
+    }).catch(() => {});
+}
+
+// Log de visita ao carregar a página
+window.addEventListener("load", () => sendLog("visita"), { once: true });
+
+// Log de clique nos botões
+const buttonsContainer = document.querySelector(".buttons");
+if (buttonsContainer) {
+    buttonsContainer.addEventListener("click", (e) => {
+        const btn = e.target.closest(".btn");
+        if (btn) {
+            sendLog("clique", btn.innerText.trim());
+        }
+    });
+        }
     </script>
 </body>
 </html>
