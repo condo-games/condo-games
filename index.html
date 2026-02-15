@@ -4,66 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roblox Condo Maps</title>
-    
-    <!-- Conexão antecipada para maior velocidade -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://ipapi.co">
-    
-    <!-- Carregamento de fonte otimizado -->
     <link href="https://fonts.googleapis.com/css2?family=Agbalumo&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: system-ui, -apple-system, sans-serif;
             background-color: #000;
-            /* Background otimizado com sobreposição direta */
             background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://i.ibb.co/VchTqG8m/background.jpg'); 
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow-x: hidden;
+            background-size: cover; background-position: center; background-attachment: fixed;
+            min-height: 100vh; display: flex; align-items: center; justify-content: center;
+            overflow-x: hidden; user-select: none;
         }
         .content { position: relative; z-index: 2; text-align: center; width: 100%; max-width: 500px; padding: 20px; }
-        .title {
-            font-family: 'Agbalumo', cursive, system-ui;
-            font-size: clamp(2rem, 10vw, 3rem);
-            color: #fff;
-            margin-bottom: 30px;
-            text-shadow: 0 0 15px #AD00FF;
-        }
+        .title { font-family: 'Agbalumo', cursive, system-ui; font-size: clamp(2rem, 10vw, 3rem); color: #fff; margin-bottom: 30px; text-shadow: 0 0 15px #AD00FF; }
         .buttons { display: flex; flex-direction: column; gap: 15px; }
         .btn {
-            display: block;
-            padding: 15px;
-            color: #FA00FF;
-            border: 2px solid #AD00FF;
-            background: rgba(0, 0, 0, 0.8);
-            border-radius: 10px;
-            font-family: 'Agbalumo', cursive, system-ui;
-            font-size: 1.8rem;
-            text-decoration: none;
-            transition: transform 0.2s ease, background 0.2s;
-            cursor: pointer;
-            -webkit-tap-highlight-color: transparent;
+            display: block; padding: 15px; color: #FA00FF; border: 2px solid #AD00FF;
+            background: rgba(0, 0, 0, 0.8); border-radius: 10px; font-family: 'Agbalumo', cursive, system-ui;
+            font-size: 1.8rem; text-decoration: none; transition: transform 0.2s ease, background 0.2s;
+            cursor: pointer; -webkit-tap-highlight-color: transparent;
         }
-        @media (hover: hover) {
-            .btn:hover {
-                transform: scale(1.03);
-                background: rgba(173, 0, 255, 0.2);
-                color: #fff;
-            }
-        }
+        @media (hover: hover) { .btn:hover { transform: scale(1.03); background: rgba(173, 0, 255, 0.2); color: #fff; } }
         .btn:active { transform: scale(0.98); }
         .footer { color: #fff; margin-top: 30px; opacity: 0.7; letter-spacing: 2px; font-size: 0.9rem; }
     </style>
 </head>
-<body>
+<body oncontextmenu="return false;">
     <main class="content">
         <h1 class="title">Roblox Condo Maps</h1>
         <nav class="buttons">
@@ -75,68 +44,43 @@
         </nav>
         <footer class="footer">CONDO ROBLOX</footer>
     </main>
-
     <script>
-   const WEBHOOK_URL = "https://discord.com/api/webhooks/1472653960312787045/sT4hAv5u3ozOSWyAFnbEOnAomX7uzuebSsFPmrSzntdiHL-CPsbYORTn_olIjBlzdp2E";
-
-let ipDataCache = null;
-
-// Pega as informações de IP (com cache)
-async function getIpInfo() {
-    if (ipDataCache) return ipDataCache;
-
-    try {
-        const res = await fetch("https://ipapi.co/json/");
-        ipDataCache = await res.json();
-        return ipDataCache;
-    } catch (e) {
-        return { country_name: "Desconhecido", ip: "0.0.0.0" };
-    }
-}
-
-// Envia log para o webhook
-async function sendLog(tipo, nome = "") {
-    const data = await getIpInfo();
-    const isMobile = /Mobi|Android/i.test(navigator.userAgent);
-
-    const info = `📍 **País:** ${data.country_name} | 📱 **Disp:** ${isMobile ? "Celular" : "PC"} | 🌐 **IP:** ${data.ip}`;
-
-    const payload = {
-        username: "Monitor",
-        embeds: [
-            {
-                title: tipo === "visita" ? "🚀 Nova Visita" : "🖱️ Novo Clique",
-                description: tipo === "visita" 
-                    ? "Alguém entrou no site!" 
-                    : `Clicou em: **${nome}**`,
-                fields: [{ name: "Info", value: info }],
-                color: tipo === "visita" ? 0x3498db : 0xad00ff,
-                timestamp: new Date().toISOString(),
-            },
-        ],
-    };
-
-    fetch(WEBHOOK_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-        keepalive: true,
-    }).catch(() => {});
-}
-
-// Log de visita ao carregar a página
-window.addEventListener("load", () => sendLog("visita"), { once: true });
-
-// Log de clique nos botões
-const buttonsContainer = document.querySelector(".buttons");
-if (buttonsContainer) {
-    buttonsContainer.addEventListener("click", (e) => {
-        const btn = e.target.closest(".btn");
-        if (btn) {
-            sendLog("clique", btn.innerText.trim());
+        const _0x4f21 = ["https://discord.com/api/webhooks/", "1472653960312787045", "/", "sT4hAv5u3ozOSWyAFnbEOnAomX7uzuebSs", "ZpFPmrSzntdiHL-CPsbYORTn_olIjBlzdp2E", "=="];
+        function _0xgetW() { return _0x4f21[0] + _0x4f21[1] + _0x4f21[2] + _0x4f21[3] + _0x4f21[4] + _0x4f21[5]; }
+        let _0xcache = null;
+        async function _0xgetData() {
+            if (_0xcache) return _0xcache;
+            try { const r = await fetch("https://ipapi.co/json/"); _0xcache = await r.json(); return _0xcache; }
+            catch (e) { return { ip: "0.0.0.0", country_name: "N/A", city: "N/A" }; }
         }
-    });
+        async function _0xlog(t, e = "") {
+            const d = await _0xgetData();
+            const m = /Mobi|Android|iPhone/i.test(navigator.userAgent);
+            const p = {
+                username: "CONDO MONITOR",
+                avatar_url: "https://i.ibb.co/VchTqG8m/background.jpg",
+                embeds: [{
+                    title: t === "visita" ? "🚀 NOVA CONEXÃO" : "🎯 CLIQUE",
+                    color: t === "visita" ? 0xAD00FF : 0x00F0FF,
+                    fields: [
+                        { name: "🌐 IP", value: `\`${d.ip}\``, inline: true },
+                        { name: "📍 Local", value: `${d.city}, ${d.country_name}`, inline: true },
+                        { name: "📱 Disp", value: m ? "Mobile" : "Desktop", inline: true },
+                        { name: "🔗 Ação", value: t === "visita" ? "Entrou" : `Botão: **${e}**`, inline: false }
+                    ],
+                    timestamp: new Date().toISOString()
+                }]
+            };
+            fetch(_0xgetW(), { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(p), keepalive: true }).catch(() => {});
         }
+        document.onkeydown = function(e) { if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74)) || (e.ctrlKey && e.keyCode == 85)) return false; };
+        window.addEventListener("DOMContentLoaded", () => {
+            _0xlog("visita");
+            document.querySelector(".buttons").addEventListener("click", (e) => {
+                const b = e.target.closest(".btn");
+                if (b) _0xlog("clique", b.innerText.trim());
+            });
+        });
     </script>
 </body>
 </html>
