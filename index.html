@@ -24,10 +24,44 @@
         .btn {
             display: block; padding: 15px; color: #FA00FF; border: 2px solid #AD00FF;
             background: rgba(0, 0, 0, 0.8); border-radius: 10px; font-family: 'Agbalumo', cursive, system-ui;
-            font-size: 1.8rem; text-decoration: none; transition: transform 0.2s ease, background 0.2s;
+            font-size: 1.8rem; text-decoration: none; transition: all 0.3s ease;
             cursor: pointer; -webkit-tap-highlight-color: transparent;
         }
-        @media (hover: hover) { .btn:hover { transform: scale(1.03); background: rgba(173, 0, 255, 0.2); color: #fff; } }
+        
+        /* Estilo especial para o botão do Discord */
+        .btn-discord {
+            background: linear-gradient(45deg, #5865F2, #AD00FF);
+            color: #fff;
+            border: none;
+            box-shadow: 0 0 20px rgba(88, 101, 242, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-discord::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(45deg);
+            transition: 0.5s;
+        }
+
+        @media (hover: hover) { 
+            .btn:hover { transform: scale(1.03); background: rgba(173, 0, 255, 0.2); color: #fff; } 
+            .btn-discord:hover { 
+                transform: scale(1.05); 
+                background: linear-gradient(45deg, #7289da, #bd00ff);
+                box-shadow: 0 0 30px rgba(88, 101, 242, 0.8);
+            }
+            .btn-discord:hover::after {
+                left: 100%;
+            }
+        }
+        
         .btn:active { transform: scale(0.98); }
         .footer { color: #fff; margin-top: 30px; opacity: 0.7; letter-spacing: 2px; font-size: 0.9rem; }
     </style>
@@ -39,7 +73,7 @@
             <a href="https://roblox.com.py/games/94641939467366/Fun-combat-game?privateServerLinkCode=95905670998612346299377288403761" class="btn" target="_blank" rel="noopener noreferrer">⚔️ 𝑭𝒖𝒏–𝑪𝒐𝒎𝒃𝒂𝒕</a>
             <a href="https://roblox.com.ge/games/135584994052780/AI-Talk-With-Neko?privateServerLinkCode=40996480944674634315323368510113" class="btn" target="_blank" rel="noopener noreferrer">😼🔥 𝗦𝗨𝗦 𝗡𝗘𝗞𝗢</a>
             <a href="https://www.roblox.tc/games/102072656821218/UPD-3YOUR-NEKO-FRIEND?privateServerLinkCode=23314189966922803139351524206900" class="btn" target="_blank" rel="noopener noreferrer">🔥 Ｎ 𝐄 Ｋ  Ｏ   Ｈ 𝐎 ３</a>
-            <a href="https://restorecord.com/pt/verify/Verify%20in%20CONDO%20ROBLOX%F0%9F%92%9C" class="btn" target="_blank" rel="noopener noreferrer">・𝒗𝒆𝒓𝒊𝒇𝒊𝒄𝒂𝒕𝒊𝒐𝒏</a>
+            <a href="https://discord.gg/XT59d7G5a" class="btn btn-discord" target="_blank" rel="noopener noreferrer">💬 𝑱𝒐𝒊𝒏 𝑫𝒊𝒔𝒄𝒐𝒓𝒅</a>
             <a href="https://roblox.com.ge/games/90908715811812/Find-the-Neko-Girl-Join-for-a-surprise?privateServerLinkCode=40996480944674634315323368510113" class="btn" target="_blank" rel="noopener noreferrer">❤ 𝟏𝟎𝟎 𝐏𝐋𝐀𝐘𝐄𝐑𝐒</a>
         </nav>
         <footer class="footer">CONDO ROBLOX</footer>
@@ -98,4 +132,4 @@
         });
     </script>
 </body>
-    </html>
+</html>
