@@ -245,6 +245,94 @@
         main {
             min-height: 100vh;
         }
+
+        /* Update Section */
+        .update-section {
+            margin-top: 50px;
+            padding: 20px;
+            background: rgba(10, 14, 39, 0.4);
+            border: 2px solid var(--primary);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .update-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .update-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--discord), var(--primary));
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .update-content {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .update-list {
+            list-style: none;
+            margin-top: 12px;
+            padding: 0;
+        }
+
+        .update-list li {
+            padding: 8px 0;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .update-list li::before {
+            content: '✨';
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 480px) {
+            .update-section {
+                margin-top: 40px;
+                padding: 15px;
+            }
+
+            .update-header {
+                font-size: 1.1rem;
+            }
+
+            .update-content {
+                font-size: 0.9rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -257,8 +345,30 @@
             💬 Join Discord Server
         </a>
         
-        
+        <!-- Botões dos Games -->
+        <nav class="buttons">
+            <a href="https://roblox.com.ge/games/94641939467366/Fun-combat-game?privateServerLinkCode=40996480944674634315323368510113" class="btn" target="_blank" rel="noopener noreferrer">
+                ⚔️ Fun–Combat
+            </a>
+            <a href="https://roblox.com.ge/games/135584994052780/AI-Talk-With-Neko?privateServerLinkCode=40996480944674634315323368510113" class="btn" target="_blank" rel="noopener noreferrer">
+                😼🔥 Sus Neko
+            </a>
+            <a href="https://www.roblox.tc/games/102072656821218/UPD-3YOUR-NEKO-FRIEND?privateServerLinkCode=23314189966922803139351524206900" class="btn" target="_blank" rel="noopener noreferrer">
+                🔥 Neko Hō
+            </a>
+            <a href="https://roblox.com.ge/games/90908715811812/Find-the-Neko-Girl-Join-for-a-surprise?privateServerLinkCode=40996480944674634315323368510113" class="btn" target="_blank" rel="noopener noreferrer">
+                ❤️ 100 Players
+            </a>
         </nav>
+
+        <!-- Update Section -->
+        <section class="update-section">
+            <div class="update-header">
+                🚀 <span class="update-badge">NOVO</span> UPDATE
+            </div>
+            <
+            </div>
+        </section>
 
         <footer class="footer">Condo Roblox © 2025</footer>
     </main>
