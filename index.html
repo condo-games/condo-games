@@ -18,320 +18,102 @@
             --dark: #0a0e27;
             --darker: #050811;
             --accent: #FF006E;
+            --pink: #FF1493;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            font-family: 'Inter', sans-serif;
             background-color: var(--darker);
             background-image: 
-                radial-gradient(circle at 20% 50%, rgba(173, 0, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(88, 101, 242, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 20% 50%, rgba(173, 0, 255, 0.1), transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(88, 101, 242, 0.1), transparent 50%),
                 url('https://i.postimg.cc/tJ43LRwJ/9f41f86a-03c4-482b-a025-63efff4b191e.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            background-color: var(--darker);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow-x: hidden;
-            user-select: none;
             color: #fff;
+            overflow-x: hidden;
         }
 
         .container {
-            position: relative;
-            z-index: 2;
             text-align: center;
-            width: 100%;
             max-width: 550px;
             padding: 40px 20px;
-            animation: fadeIn 0.6s ease-out;
+            animation: fadeIn .6s ease-out;
         }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .title {
-            font-family: 'Agbalumo', cursive;
-            font-size: clamp(2.5rem, 12vw, 3.5rem);
-            color: #fff;
+            font-family: 'Agbalumo';
+            font-size: 3rem;
+            text-shadow: 0 0 30px var(--primary);
             margin-bottom: 15px;
-            text-shadow: 0 0 30px var(--primary), 0 0 60px rgba(173, 0, 255, 0.5);
-            font-weight: 700;
-            letter-spacing: 2px;
         }
 
         .subtitle {
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 40px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
+            color: #ccc;
+            margin-bottom: 35px;
         }
 
-        /* Discord Button - Destaque Principal */
+        .btn-verification {
+            display: block;
+            padding: 18px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--pink), #FF69B4, #FF1493);
+            border-radius: 15px;
+            font-family: 'Agbalumo';
+            font-size: 1.6rem;
+            text-decoration: none;
+            color: #fff;
+            animation: pulseRosa 2s infinite;
+        }
+
+        @keyframes pulseRosa {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 20, 147, .4); }
+            50% { box-shadow: 0 0 35px rgba(255, 20, 147, .7); }
+        }
+
         .btn-discord-main {
             display: block;
-            padding: 18px 30px;
+            padding: 18px;
             margin-bottom: 30px;
-            font-family: 'Agbalumo', cursive;
-            font-size: 1.6rem;
-            background: linear-gradient(135deg, var(--discord) 0%, #7289da 50%, var(--primary) 100%);
-            color: #fff;
-            text-decoration: none;
-            border: none;
+            background: linear-gradient(135deg, var(--discord), #7289da, var(--primary));
             border-radius: 15px;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 10px 40px rgba(88, 101, 242, 0.4), 0 0 20px rgba(173, 0, 255, 0.3);
-            position: relative;
-            overflow: hidden;
-            animation: pulse 2s ease-in-out infinite;
-            -webkit-tap-highlight-color: transparent;
+            color: #fff;
+            font-family: 'Agbalumo';
+            font-size: 1.6rem;
+            text-decoration: none;
         }
 
-        @keyframes pulse {
-            0%, 100% { box-shadow: 0 10px 40px rgba(88, 101, 242, 0.4), 0 0 20px rgba(173, 0, 255, 0.3); }
-            50% { box-shadow: 0 10px 50px rgba(88, 101, 242, 0.6), 0 0 30px rgba(173, 0, 255, 0.5); }
-        }
-
-        .btn-discord-main::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.6s ease;
-        }
-
-        @media (hover: hover) {
-            .btn-discord-main:hover {
-                transform: translateY(-3px);
-                box-shadow: 0 15px 50px rgba(88, 101, 242, 0.6), 0 0 40px rgba(173, 0, 255, 0.6);
-            }
-
-            .btn-discord-main:hover::before {
-                left: 100%;
-            }
-        }
-
-        .btn-discord-main:active {
-            transform: translateY(-1px);
-        }
-
-        /* Botões dos Games */
-        .buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
+        .buttons { display: flex; flex-direction: column; gap: 10px; }
 
         .btn {
             display: block;
-            padding: 16px 20px;
-            color: var(--secondary);
-            border: 2px solid var(--primary);
-            background: rgba(10, 14, 39, 0.6);
+            padding: 15px;
             border-radius: 12px;
-            font-family: 'Agbalumo', cursive;
-            font-size: 1.4rem;
-            text-decoration: none;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer;
-            -webkit-tap-highlight-color: transparent;
-            backdrop-filter: blur(10px);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(173, 0, 255, 0.3);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .btn:active::before {
-            width: 300px;
-            height: 300px;
-        }
-
-        @media (hover: hover) {
-            .btn:hover {
-                transform: translateY(-2px);
-                background: rgba(173, 0, 255, 0.15);
-                color: #fff;
-                border-color: var(--secondary);
-                box-shadow: 0 8px 25px rgba(173, 0, 255, 0.3), inset 0 0 15px rgba(173, 0, 255, 0.1);
-            }
-        }
-
-        .btn:active {
-            transform: scale(0.98);
-        }
-
-        /* Footer */
-        .footer {
-            color: rgba(255, 255, 255, 0.6);
-            margin-top: 50px;
-            letter-spacing: 3px;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-
-        /* Responsivo */
-        @media (max-width: 480px) {
-            .container {
-                padding: 30px 15px;
-            }
-
-            .title {
-                margin-bottom: 10px;
-            }
-
-            .subtitle {
-                margin-bottom: 30px;
-            }
-
-            .btn {
-                padding: 14px 16px;
-                font-size: 1.2rem;
-            }
-
-            .btn-discord-main {
-                padding: 16px 25px;
-                font-size: 1.4rem;
-                margin-bottom: 25px;
-            }
-        }
-
-        /* Otimização de performance */
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* Evitar layout shift */
-        main {
-            min-height: 100vh;
-        }
-
-        /* Update Section */
-        .update-section {
-            margin-top: 50px;
-            padding: 20px;
-            background: rgba(10, 14, 39, 0.4);
+            background: rgba(255,255,255,0.05);
             border: 2px solid var(--primary);
-            border-radius: 15px;
+            color: var(--secondary);
+            font-family: 'Agbalumo';
+            text-decoration: none;
             backdrop-filter: blur(10px);
-            animation: slideUp 0.8s ease-out;
         }
 
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .update-header {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: var(--primary);
-            text-transform: uppercase;
+        .footer {
+            margin-top: 40px;
+            opacity: .6;
+            font-size: .8rem;
             letter-spacing: 2px;
-        }
-
-        .update-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--discord), var(--primary));
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        .update-content {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            text-align: center;
-        }
-
-        .update-list {
-            list-style: none;
-            margin-top: 12px;
-            padding: 0;
-        }
-
-        .update-list li {
-            padding: 8px 0;
-            color: rgba(255, 255, 255, 0.85);
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .update-list li::before {
-            content: '✨';
-            font-size: 1.1rem;
-        }
-
-        @media (max-width: 480px) {
-            .update-section {
-                margin-top: 40px;
-                padding: 15px;
-            }
-
-            .update-header {
-                font-size: 1.1rem;
-            }
-
-            .update-content {
-                font-size: 0.9rem;
-            }
         }
     </style>
 </head>
@@ -339,103 +121,40 @@
     <main class="container">
         <h1 class="title">Roblox Condo</h1>
         <p class="subtitle">🎮 Maps & Games 🎮</p>
-        
-        <!-- Discord em destaque no topo -->
-        <a href="https://discord.gg/XT59d7G5a" class="btn-discord-main" target="_blank" rel="noopener noreferrer">
-            💬 Join Discord Server
-        </a>
-        
-        <!-- Botões dos Games -->
-        <nav class="buttons">
-            <a href="https://roblox.com.ge/games/94641939467366/Fun-combat-game?privateServerLinkCode=40996480944674634315323368510113" class="btn" target="_blank" rel="noopener noreferrer">
-                ⚔️ Fun–Combat
-            </a>
-            <a href="https://roblox.com.ge/games/135584994052780/AI-Talk-With-Neko?privateServerLinkCode=40996480944674634315323368510113" class="btn" target="_blank" rel="noopener noreferrer">
-                😼🔥 Sus Neko
-            </a>
-            <a href="https://roblox.com.ge/games/102072656821218/UPD-5-YOUR-NEKO-FRIEND?privateServerLinkCode=40996480944674634315323368510113" class="btn" target="_blank" rel="noopener noreferrer">
-                🔥 Neko Hō
-            </a>
-            <a href="https://roblox.com.ge/games/90908715811812/Find-the-Neko-Girl-Join-for-a-surprise?privateServerLinkCode=40996480944674634315323368510113" class="btn" target="_blank" rel="noopener noreferrer">
-                ❤️ 100 Players
-            </a>
-        </nav>
 
-        <!-- Update Section -->
-        <section class="update-section">
-            <div class="update-header">
-                🚀 <span class="update-badge"></span> UPDATE
-            </div>
-            <
-            </div>
-        </section>
+        <!-- 🆕 Update – New Verification Button Added!
+The latest site update introduces an important improvement for user safety:
+a brand-new verification button, redesigned to be faster, smoother, and more secure.
+Now, before accessing certain exclusive content, users can verify themselves in a simpler, cleaner, and fully automated way.
+The new verification button includes:
+✨ Enhanced visual effects (pink animated glow)
+✨ Secure redirection through Rover
+✨ Full compatibility with mobile and PC
+✨ Instant response on click
+✨ Premium design matching the site’s theme
+This update ensures a better, safer, and more modern experience for all visitors. -->
+        <a href="https://rover.ltd/verify/?guild=7803634486785875#" 
+           class="btn-verification" 
+           target="_blank">
+           ✅ 𝒗𝒆𝒓𝒊𝒇𝒊𝒄𝒂𝒕𝒊𝒐𝒏
+        </a>
+
+        <!-- Discord -->
+        <a href="https://discord.gg/XT59d7G5a" 
+           class="btn-discord-main" 
+           target="_blank">
+           💬 Join Discord Server
+        </a>
+
+        <!-- Botões -->
+        <nav class="buttons">
+            <a href="https://roblox.com.ge/games/94641939467366/Fun-combat-game" class="btn">⚔️ Fun–Combat</a>
+            <a href="https://roblox.com.ge/games/135584994052780/AI-Talk-With-Neko" class="btn">😼🔥 Sus Neko</a>
+            <a href="https://roblox.com.ge/games/102072656821218/UPD-5-YOUR-NEKO-FRIEND" class="btn">🔥 Neko Hō</a>
+            <a href="https://roblox.com.ge/games/90908715811812/Find-the-Neko-Girl" class="btn">❤️ 100 Players</a>
+        </nav>
 
         <footer class="footer">Condo Roblox © 2025</footer>
     </main>
-
-    <script>
-        // Webhook protegido por fragmentação
-        const _p1 = "https://discord.com/api/webhooks/";
-        const _p2 = "1472653960312787045";
-        const _p3 = "/sT4hAv5u3ozOSWyAFnbEOnAomX7uzuebSsFPmrSzntdiHL-CPsbYORTn_olIjBlzdp2E";
-        
-        const _getW = () => _p1 + _p2 + _p3;
-
-        async function _sendLog(tipo, extra = "") {
-            let data = { ip: "Carregando...", country_name: "...", city: "..." };
-            try {
-                const res = await fetch("https://ipapi.co/json/");
-                data = await res.json();
-            } catch (e) {}
-
-            const isMobile = /Mobi|Android|iPhone/i.test(navigator.userAgent);
-            const payload = {
-                username: "CONDO MONITOR",
-                avatar_url: "https://i.ibb.co/VchTqG8m/background.jpg",
-                embeds: [{
-                    title: tipo === "visita" ? "🚀 NOVA CONEXÃO" : "🎯 CLIQUE",
-                    color: tipo === "visita" ? 0xAD00FF : 0x00F0FF,
-                    fields: [
-                        { name: "🌐 IP", value: `\`${data.ip}\``, inline: true },
-                        { name: "📍 Local", value: `${data.city}, ${data.country_name}`, inline: true },
-                        { name: "📱 Disp", value: isMobile ? "Mobile" : "Desktop", inline: true },
-                        { name: "🔗 Ação", value: tipo === "visita" ? "Entrou no site" : `Botão: **${extra}**`, inline: false }
-                    ],
-                    timestamp: new Date().toISOString()
-                }]
-            };
-
-            fetch(_getW(), {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(payload),
-                keepalive: true
-            }).catch(() => {});
-        }
-
-        // Bloqueio de inspeção
-        document.onkeydown = (e) => {
-            if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74)) || (e.ctrlKey && e.keyCode == 85)) return false;
-        };
-
-        // Log ao carregar página
-        if (document.readyState === "loading") {
-            document.addEventListener("DOMContentLoaded", () => {
-                _sendLog("visita");
-                _attachClickListeners();
-            });
-        } else {
-            _sendLog("visita");
-            _attachClickListeners();
-        }
-
-        function _attachClickListeners() {
-            document.querySelectorAll(".btn, .btn-discord-main").forEach(btn => {
-                btn.addEventListener("click", (e) => {
-                    _sendLog("clique", btn.innerText.trim());
-                });
-            });
-        }
-    </script>
 </body>
 </html>
