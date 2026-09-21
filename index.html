@@ -1,130 +1,183 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#090b18" />
+    <title>Join Discord</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: #090b18;
+        color: #fff;
+      }
 
-<meta name="description" content="Roblox Condo Maps, private Roblox servers, fun combat games, neko maps and multiplayer experiences. Play Roblox maps and games with friends.">
+      * { box-sizing: border-box; }
 
-<title>Roblox Condo Maps</title>
+      html, body { min-width: 100%; min-height: 100%; margin: 0; }
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      body {
+        min-height: 100vh;
+        overflow: hidden;
+        background:
+          radial-gradient(circle at 50% 42%, rgba(81, 104, 255, .32), transparent 23rem),
+          radial-gradient(circle at 15% 15%, rgba(0, 205, 255, .15), transparent 20rem),
+          radial-gradient(circle at 90% 88%, rgba(173, 72, 255, .18), transparent 24rem),
+          #090b18;
+      }
 
-<link href="https://fonts.googleapis.com/css2?family=Agbalumo&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+      a { -webkit-tap-highlight-color: transparent; }
 
-<style>
+      .invite-page {
+        position: relative;
+        display: grid;
+        min-height: 100vh;
+        overflow: hidden;
+        place-items: center;
+        padding: 24px;
+        isolation: isolate;
+      }
 
-:root {
---primary: #AD00FF;
---secondary: #FA00FF;
---discord: #5865F2;
---dark: #0a0e27;
---darker: #050811;
---accent: #FF006E;
---pink: #FF1493;
-}
+      .invite-page::before {
+        position: absolute;
+        z-index: -1;
+        width: 170vw;
+        height: 170vw;
+        max-width: 1500px;
+        max-height: 1500px;
+        border: 1px solid rgba(139, 154, 255, .08);
+        border-radius: 34%;
+        content: "";
+        transform: rotate(24deg);
+        box-shadow: 0 0 0 34px rgba(139, 154, 255, .025), 0 0 0 68px rgba(139, 154, 255, .018);
+      }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
+      .invite-page::after {
+        position: absolute;
+        z-index: -1;
+        inset: 0;
+        background-image: linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+        background-size: 38px 38px;
+        content: "";
+        mask-image: linear-gradient(to bottom, transparent, black 22%, black 78%, transparent);
+        opacity: .65;
+      }
 
-body{
-font-family:'Inter',sans-serif;
-background-color:var(--darker);
-background-image:
-radial-gradient(circle at 20% 50%, rgba(173,0,255,0.1), transparent 50%),
-radial-gradient(circle at 80% 80%, rgba(88,101,242,0.1), transparent 50%),
-url('https://i.postimg.cc/vmYQqsj5/Zrzut-ekranu-2026-03-05-205546.png');
-background-size:cover;
-background-position:center;
-background-attachment:fixed;
-min-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-color:#fff;
-overflow-x:hidden;
-}
+      .invite-content {
+        display: flex;
+        width: min(100%, 330px);
+        flex-direction: column;
+        align-items: center;
+        gap: 28px;
+      }
 
-.container{
-text-align:center;
-max-width:550px;
-padding:40px 20px;
-animation:fadeIn .6s ease-out;
-}
+      .invite-avatar {
+        width: 142px;
+        height: 142px;
+        border: 4px solid rgba(255,255,255,.92);
+        border-radius: 30px;
+        object-fit: cover;
+        box-shadow: 0 0 0 7px rgba(83,103,255,.32), 0 0 34px rgba(83,103,255,.48), 0 20px 48px rgba(0,0,0,.48);
+        animation: avatar-in 520ms cubic-bezier(.23,1,.32,1) both;
+      }
 
-@keyframes fadeIn{
-from{opacity:0; transform:translateY(20px);}
-to{opacity:1; transform:translateY(0);}
-}
+      .discord-button {
+        display: inline-flex;
+        width: 100%;
+        min-height: 56px;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid rgba(255,255,255,.82);
+        border-radius: 16px;
+        background: linear-gradient(135deg, #7280ff 0%, #5865f2 54%, #7a4dff 100%);
+        color: #fff;
+        font-size: 15px;
+        font-weight: 800;
+        letter-spacing: .01em;
+        text-decoration: none;
+        text-shadow: 0 1px 2px rgba(0,0,0,.24);
+        box-shadow: 0 0 0 5px rgba(88,101,242,.18), 0 16px 32px rgba(73,83,224,.4), inset 0 2px 0 rgba(255,255,255,.28);
+        transition: transform 160ms cubic-bezier(.23,1,.32,1), box-shadow 160ms cubic-bezier(.23,1,.32,1), filter 160ms ease;
+        animation: button-in 520ms 80ms cubic-bezier(.23,1,.32,1) both;
+      }
 
-.title{
-font-family:'Agbalumo';
-font-size:3rem;
-text-shadow:0 0 30px var(--primary);
-margin-bottom:15px;
-}
+      .discord-button:hover {
+        filter: brightness(1.1) saturate(1.08);
+        box-shadow: 0 0 0 7px rgba(88,101,242,.22), 0 20px 38px rgba(73,83,224,.52), inset 0 2px 0 rgba(255,255,255,.32);
+        transform: translateY(-3px);
+      }
 
-.subtitle{
-color:#ccc;
-margin-bottom:35px;
-}
+      .discord-button:focus-visible, .invite-url:focus-visible {
+        outline: 3px solid #aeb6ff;
+        outline-offset: 5px;
+      }
 
-.buttons{
-display:flex;
-flex-direction:column;
-gap:10px;
-}
+      .discord-button:active { transform: scale(.97); }
 
-.btn{
-display:block;
-padding:15px;
-border-radius:12px;
-background:rgba(255,255,255,0.05);
-border:2px solid var(--primary);
-color:var(--secondary);
-font-family:'Agbalumo';
-text-decoration:none;
-backdrop-filter:blur(10px);
-}
+      .invite-url {
+        max-width: 100%;
+        overflow: hidden;
+        color: rgba(224,228,255,.72);
+        font-size: 12px;
+        line-height: 1.4;
+        text-overflow: ellipsis;
+        text-decoration: none;
+        white-space: nowrap;
+        transition: color 160ms ease, transform 160ms ease;
+        animation: url-in 520ms 140ms cubic-bezier(.23,1,.32,1) both;
+      }
 
-.footer{
-margin-top:40px;
-opacity:.6;
-font-size:.8rem;
-letter-spacing:2px;
-}
+      .invite-url:hover { color: #fff; transform: translateY(-1px); }
 
-</style>
-</head>
+      @keyframes avatar-in {
+        from { opacity: 0; transform: translateY(10px) scale(.94) rotate(-2deg); }
+        to { opacity: 1; transform: translateY(0) scale(1) rotate(0); }
+      }
 
-<body>
+      @keyframes button-in {
+        from { opacity: 0; transform: translateY(12px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
 
-<main class="container">
+      @keyframes url-in {
+        from { opacity: 0; transform: translateY(8px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
 
-<h1 class="title">Roblox Condo</h1>
-<p class="subtitle">🎮 Maps & Games 🎮</p>
+      @media (prefers-reduced-motion: reduce) {
+        .invite-avatar, .discord-button, .invite-url { animation: none; }
+        .discord-button, .invite-url { transition: none; }
+      }
 
-<nav class="buttons">
+      @media (max-width: 480px) {
+        .invite-avatar { width: 130px; height: 130px; }
+        .invite-content { width: min(100%, 290px); gap: 24px; }
+        .invite-url { font-size: 11px; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="invite-page">
+      <div class="invite-content">
+        <img class="invite-avatar" src="data:image/png;base64,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" alt="Discord invite image" />
+        <a class="discord-button" href="https://discord.gg/3UkdwSfWP" target="_blank" rel="noreferrer" aria-label="Join Discord">Join Discord</a>
+        <a class="invite-url" href="https://discord.gg/3UkdwSfWP" target="_blank" rel="noreferrer">https://discord.gg/3UkdwSfWP</a>
+      </div>
+    </main>
+    <script>
+      const button = document.querySelector(".discord-button");
+      const storageKey = "discord_invite_clicks";
 
-<a href="https://roblox.com.ge/games/94641939467366/Fun-combat-game?privateServerLinkCode=40996480944674634315323368510113" class="btn">⚔️ Fun–Combat</a>
-
-<a href="https://roblox.com.ge/games/79630857443400/UPD-Meet-The-Neko?privateServerLinkCode=40996480944674634315323368510113" class="btn">😼🔥 Sus Neko</a>
-
-<a href="https://roblox.com.ge/games/11478246457/UPD-Sleep-on-Neko-Lap?privateServerLinkCode=40996480944674634315323368510113" class="btn">🔥 Neko Hō</a>
-
-<a href="" class="btn">❤️ 100 Players</a>
-
-</nav>
-
-<footer class="footer">
-Condo Roblox © 2025
-</footer>
-
-</main>
-
-</body>
+      button.addEventListener("click", () => {
+        const totalClicks = Number(localStorage.getItem(storageKey) || "0") + 1;
+        localStorage.setItem(storageKey, String(totalClicks));
+        console.info("Discord invite clicked", {
+          totalClicks,
+          timestamp: new Date().toISOString(),
+        });
+      });
+    </script>
+  </body>
 </html>
+
